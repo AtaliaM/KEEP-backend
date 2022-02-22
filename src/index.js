@@ -9,17 +9,14 @@ try {
   console.log("fail");
 }
 
-// console.log(process.env.NODE_ENV);
-// const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
+
+const noteRouter = require("./routes/note");
 
 app.use(express.json());
+app.use(noteRouter);
 
-// app.listen(port, host, () => {
-//     console.log(`server is up on port ${port}`);
-// })
-
-app.get('/', function (req, res) {
-  res.send('Hello World')
+app.listen(port, host, () => {
+    console.log(`server is up on port ${port}`);
 })
-
-app.listen(3000)
