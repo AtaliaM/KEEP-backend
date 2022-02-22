@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express')
 const app = express()
+const noteRouter = require("./routes/note");
 
 try {
   require("./db/mongoose");
@@ -12,7 +13,6 @@ try {
 const port = process.env.PORT || 3000;
 const host = '0.0.0.0';
 
-const noteRouter = require("./routes/note");
 
 app.use(express.json());
 app.use(noteRouter);
