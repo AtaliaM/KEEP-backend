@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "express": "^4.17.3"
-  }
+  },
+  "name": "keep-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtaliaM/KEEP-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AtaliaM/KEEP-backend/issues"
+  },
+  "homepage": "https://github.com/AtaliaM/KEEP-backend#readme",
+  "description": ""
 }
