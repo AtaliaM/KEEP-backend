@@ -7,7 +7,7 @@ try {
   require("./db/mongoose");
   console.log("success connectiong to DB")
 } catch(e) {
-  console.log("failure connectiong to DB");
+  console.log("failed to connect to DB");
 }
 
 const port = process.env.PORT || 3000;
