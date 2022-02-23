@@ -5,18 +5,18 @@ const noteRouter = require("./routes/note");
 
 try {
   require("./db/mongoose");
-  console.log("success")
+  console.log("success connectiong to DB")
 } catch(e) {
-  console.log("fail");
+  console.log("failure connectiong to DB");
 }
 
 const port = process.env.PORT || 3000;
-const host = '0.0.0.0';
+const host = process.env.HOST;
 
 
 app.use(express.json());
 app.use(noteRouter);
 
 app.listen(port, host, () => {
-    console.log(`server is up on port ${port}`);
+    console.log(`server is up on port ${port} and host ${host}`);
 })
