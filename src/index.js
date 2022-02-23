@@ -10,7 +10,7 @@ try {
   console.log("failed to connect to DB");
 }
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 7000;
 const host = process.env.HOST;
 
 
