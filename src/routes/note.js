@@ -1,6 +1,7 @@
 const express = require('express');
 const router = new express.Router();
 const Note = require("../models/note");
+const {validateNoteUpdateValues} = require("../utils/utils");
 
 defineAddNewNoteEndpoint();
 defineEditNoteEndpoint();
@@ -29,26 +30,25 @@ function defineEditNoteEndpoint() {
     return (
         router.patch("/notes/:id", async (req, res) => {
             const updates = Object.keys(req.body);
-            const allowedUpdates = ["title", "body"];
-            const isValidOperation = updates.every((update) => {
-                return allowedUpdates.includes(update);
-            })
-        
+            const isValidOperation = validateNoteUpdateValues(updates);
             if (!isValidOperation) {
                 return res.status(400).send(({ error: "Invalid update" }));
             }
         
             try {
-                const note = await Note.findById(req.params.id);
-                if (!note) {
-                    return res.status(404).send();
-                }
-                
+                const note = {};
                 updates.forEach((update) => {
                     note[update] = req.body[update];
                 })
-                await note.save();
-                res.send(note);
+                const updatedNote = await Note.findOneAndUpdate({_id: req.params.id}, note, {
+                    new: true
+                  });
+
+                if (!updatedNote) {
+                    return res.status(404).send();
+                }
+                
+                res.send(updatedNote);
             }
             catch (e) {
                 res.status(400).send(e);
