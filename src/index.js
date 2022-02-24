@@ -1,6 +1,7 @@
 require('dotenv').config();
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const cors = require("cors");
 const noteRouter = require("./routes/note");
 
 try {
@@ -15,6 +16,7 @@ const host = process.env.HOST;
 
 
 app.use(express.json());
+app.use(cors());
 app.use(noteRouter);
 
 app.listen(port, host, () => {
