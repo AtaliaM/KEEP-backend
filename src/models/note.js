@@ -7,7 +7,6 @@ const Note = mongoose.model('Note', {
     },
     body: {
         type: String,
-        required: true,
         trim: true
     }
 })
