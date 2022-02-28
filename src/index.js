@@ -12,7 +12,7 @@ try {
 }
 
 const port = process.env.PORT || 7000;
-const host = process.env.HOST;
+const host = process.env.HOST || '0.0.0.0';
 
 
 app.use(express.json());
